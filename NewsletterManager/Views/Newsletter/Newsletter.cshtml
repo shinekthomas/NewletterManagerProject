@@ -1,0 +1,44 @@
+﻿
+@model NewsletterManager.Core.BE.Newsletter
+
+@{
+    ViewBag.Title = "Newsletter Sign Up";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Signup Details</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.EmailAddress)
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HowHeardAboutUs)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.HowHeardAboutUs, "Please select")
+            @Html.ValidationMessageFor(model => model.HowHeardAboutUs)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reason)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Reason)
+        </div>
+
+        <input type="submit" value="Sign Up" />
+    </fieldset>
+}
